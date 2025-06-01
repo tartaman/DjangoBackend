@@ -27,7 +27,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     objects = UsuarioManager()
 
-    USERNAME_FIELD = 'username'  # 👈 Esto le dice a Django qué campo usar para login
+    USERNAME_FIELD = 'username'  # Esto le dice a Django qué campo usar para login
     REQUIRED_FIELDS = []  # campos requeridos al crear superusuario
 
     def __str__(self):
