@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import Usuario
-
+from .models import Vacante
+from .models import Solicitud
 
 #Serializer para el modelo Usuario (para endpoints restful)
 class UsuarioSerializer(serializers.ModelSerializer):
@@ -30,3 +31,15 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
         data['username'] = self.user.username
         return data
+
+# Serializer for the Vacante model 
+class VacanteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacante  # Assuming you have a Vacante model
+        fields = '__all__'  # Adjust fields as necessary
+
+# Serializer for the Solicitud model
+class SolicitudSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Solicitud  # Assuming you have a Solicitud model
+        fields = '__all__'  # Adjust fields as necessary

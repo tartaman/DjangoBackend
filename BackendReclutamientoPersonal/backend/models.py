@@ -32,3 +32,19 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+class Vacante(models.Model):
+    nombre = models.CharField(max_length=100)  # Nombre de la vacante (ej. 'Backend Developer')
+    puesto = models.CharField(max_length=100)  # Área o departamento (ej. 'Tecnología')
+    descripcion = models.TextField()
+    sueldo = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_publicacion = models.DateTimeField(auto_now_add=True)
+    activa = models.BooleanField(default=True)  # Para ocultar vacantes antiguas
+
+class Solicitud(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    vacante = models.ForeignKey(Vacante, on_delete=models.CASCADE)
+    fecha_solicitud = models.DateTimeField(auto_now_add=True)
+    mensaje = models.TextField(blank=True, null=True)  # Mensaje opcional del postulante
+    estado = models.CharField(max_length=50, default='Pendiente')  # Pendiente, Aceptado, Rechazado, etc.
+
