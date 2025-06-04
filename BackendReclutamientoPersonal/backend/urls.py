@@ -9,11 +9,10 @@ router = DefaultRouter()
 #register the viewset with the router
 # This will automatically create the necessary routes for the UsuarioViewSet
 router.register(r'usuarios', UsuarioViewSet)
-
+router.register(r'vacantes', VacanteViewSet)
+router.register(r'solicitudes', SolicitudViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
     path('login/', CustomTokenObtainPairView.as_view(), name='tokenPairview'),  # Login
-    path('vacantes/', VacanteViewSet.as_view(), name='vacantes'),  # Include vacantes URLs
-    path('solicitudes/', SolicitudViewSet.as_view(), name='solicitudes'),  # Include solicitudes URLs
 ]

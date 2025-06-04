@@ -55,7 +55,7 @@ class VacanteViewSet(viewsets.ModelViewSet):
     A simple ViewSet for listing or retrieving Vacantes.
     """
     queryset = Vacante.objects.all()  # Uncomment this when you have the Vacante model
-    # serializer_class = VacanteSerializer  # Uncomment this when you have the Vacante serializer
+    serializer_class = VacanteSerializer  # Uncomment this when you have the Vacante serializer
     permission_classes = [IsAuthenticated]  # Only authenticated users can access this view
     def get_queryset(self):
         return Vacante.objects.filter(activa=True)  # Only return active vacancies
@@ -65,7 +65,7 @@ class SolicitudViewSet(viewsets.ModelViewSet):
     A simple ViewSet for listing or retrieving Solicitudes.
     """
     queryset = Solicitud.objects.all()  # Uncomment this when you have the Solicitud model
-    # serializer_class = SolicitudSerializer  # Uncomment this when you have the Solicitud serializer
+    serializer_class = SolicitudSerializer  # Uncomment this when you have the Solicitud serializer
     permission_classes = [IsAuthenticated]  # Only authenticated users can access this view
     
     def get_queryset(self):
