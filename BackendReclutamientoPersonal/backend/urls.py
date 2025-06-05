@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenRefreshView
 from .views import UsuarioViewSet, LoginView
 from .views import CustomTokenObtainPairView
 from .views import VacanteViewSet
@@ -15,4 +16,5 @@ router.register(r'solicitudes', SolicitudViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('login/', CustomTokenObtainPairView.as_view(), name='tokenPairview'),  # Login
+    path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
