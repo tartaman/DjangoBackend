@@ -42,8 +42,8 @@ class Vacante(models.Model):
     activa = models.BooleanField(default=True)  # Para ocultar vacantes antiguas
 
 class Solicitud(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    vacante = models.ForeignKey(Vacante, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=False, null=False)
+    vacante = models.ForeignKey(Vacante, on_delete=models.CASCADE, blank=False, null=False)
     fecha_solicitud = models.DateTimeField(auto_now_add=True)
     mensaje = models.TextField(blank=True, null=True)  # Mensaje opcional del postulante
     estado = models.CharField(max_length=50, default='Pendiente')  # Pendiente, Aceptado, Rechazado, etc.

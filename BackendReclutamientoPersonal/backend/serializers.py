@@ -40,6 +40,9 @@ class VacanteSerializer(serializers.ModelSerializer):
 
 # Serializer for the Solicitud model
 class SolicitudSerializer(serializers.ModelSerializer):
+    nombre_vacante = serializers.CharField(source='vacante.nombre', read_only=True)
+    puesto_vacante = serializers.CharField(source='vacante.puesto', read_only=True)
     class Meta:
         model = Solicitud  # Assuming you have a Solicitud model
         fields = '__all__'  # Adjust fields as necessary
+        read_only_fields = ['usuario']

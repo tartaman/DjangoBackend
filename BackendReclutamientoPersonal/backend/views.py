@@ -70,3 +70,6 @@ class SolicitudViewSet(viewsets.ModelViewSet):
     
     def get_queryset(self):
         return Solicitud.objects.filter(usuario=self.request.user)  # Only return solicitudes for the authenticated user
+    def perform_create(self, serializer):
+        # Asocia automáticamente la solicitud con el usuario autenticado
+        serializer.save(usuario=self.request.user)
